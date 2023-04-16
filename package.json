@@ -1,8 +1,5 @@
 {
-  "name": "@bartaxyz/blockatars",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/blockatars"
-  },
+  "name": "blockatars",
   "version": "0.0.1",
   "description": "Get rid of those ugly blockies. Instead, enhance your web3 UIs with beautiful blockavatars!",
   "scripts": {
