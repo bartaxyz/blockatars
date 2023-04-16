@@ -3,7 +3,7 @@ import { lighten } from "polished";
 import { useSeedColor } from "./hooks/useSeedColor";
 import { useSeedRandom } from "./hooks/useSeedRandom";
 
-export interface AvatarProps {
+export interface AvatarProps extends React.SVGProps<SVGSVGElement> {
   /**
    * A seed for the avatar (e.g. a wallet address, user id, etc.)
    */
@@ -36,6 +36,7 @@ export const Avatar: FC<AvatarProps> = ({
   disableLowerCase = false,
   disableNoise = false,
   disableBlur = false,
+  ...props
 }) => {
   const transformedSeed = disableLowerCase ? seed : seed.toLowerCase();
   const { shift } = useSeedRandom(transformedSeed);
@@ -80,7 +81,7 @@ export const Avatar: FC<AvatarProps> = ({
   }, [color1, color2, shift]);
 
   return (
-    <svg width={size} height={size} viewBox="0 0 200 200">
+    <svg width={size} height={size} viewBox="0 0 200 200" {...props}>
       <defs>
         {!disableBlur && (
           <filter id="blur">
