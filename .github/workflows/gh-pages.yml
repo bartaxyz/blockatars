@@ -19,7 +19,6 @@ jobs:
         cache: 'yarn'
     - run: yarn
     - run: yarn test
-    
 
   build:
     runs-on: ubuntu-latest
@@ -36,8 +35,5 @@ jobs:
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@3.6.2
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: storybook-static
-        CLEAN: true
-        TARGET_FOLDER: storybook-static
+        folder: storybook-static
+        token: ${{ secrets.GITHUB_TOKEN }}
