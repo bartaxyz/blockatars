@@ -1,7 +1,7 @@
 {
   "name": "blockatars",
-  "version": "0.1.0",
-  "description": "Get rid of those ugly blockies. Instead, enhance your web3 UIs with beautiful blockavatars!",
+  "version": "0.1.1",
+  "description": "React library for generating unique visual hashes",
   "scripts": {
     "rollup": "rollup -c",
     "test": "jest",
