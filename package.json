@@ -1,6 +1,5 @@
 {
   "name": "blockatars",
-  "type": "module",
   "version": "0.2.0",
   "description": "React library for generating unique visual hashes",
   "scripts": {
