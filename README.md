@@ -7,7 +7,7 @@ React library that generates unique visual hashes. Every small change in `seed` 
 
 Blockatars internally uses the same system for generating colors as [blockies](https://github.com/download13/blockies), this was done to preserve some visual compatibility between library that's already widely used. Though, the color distribution may be (and likely will be) different.
 
-[Demo / Website](bartaxyz.github.io/blockatars/)
+[Demo / Website](https://bartaxyz.github.io/blockatars/)
 
 ## Usage
 
