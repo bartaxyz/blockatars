@@ -46,6 +46,7 @@ jobs:
         node-version: '16.x'
         cache: 'yarn'
     - run: yarn
+    - run: yarn build
     - uses: JS-DevTools/npm-publish@v1
       with:
         token: ${{ secrets.NPM_TOKEN }}
