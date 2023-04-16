@@ -20,7 +20,7 @@ jobs:
     - run: yarn
     - run: yarn test
 
-  build:
+  deploy:
     runs-on: ubuntu-latest
     needs: [test]
     steps:
@@ -33,7 +33,8 @@ jobs:
     - run: yarn
     - run: yarn storybook:build
     - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@4.4.1
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: storybook-static
         token: ${{ secrets.GITHUB_TOKEN }}
+    
