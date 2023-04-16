@@ -1,21 +1,46 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
-import { Avatar } from "./Avatar";
+import { Avatar, AvatarProps } from "./Avatar";
 
 export default {
-  title: "ReactComponentLibrary/Avatar",
+  title: "Blockatar/Avatar",
   component: Avatar,
-} as ComponentMeta<typeof Avatar>;
+} as Meta<typeof Avatar>;
 
-const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
+type Story = StoryObj<typeof Avatar>;
 
-export const Base = Template.bind({});
-Base.args = {
-  size: 80,
+export const Base: Story = {
+  render: ({ ...props }: Partial<AvatarProps>) => (
+    <Avatar
+      seed="0xe6cc08e94d44184e5f412e52f9f1866b6d7c8990"
+      size={160}
+      {...props}
+    />
+  ),
+  args: {
+    seed: "0xe6cc08e94d44184e5f412e52f9f1866b6d7c8990",
+    size: 160,
+  },
 };
 
-export const Animated = Template.bind({});
-Animated.args = {
-  size: 80,
+export const Stylised: Story = {
+  render: ({ ...props }: Partial<AvatarProps>) => (
+    <div
+      style={{
+        borderRadius: 4,
+        border: "1px solid #eee",
+      }}
+    >
+      <Avatar
+        seed="0xe6cc08e94d44184e5f412e52f9f1866b6d7c8990"
+        size={160}
+        {...props}
+      />
+    </div>
+  ),
+  args: {
+    seed: "0xe6cc08e94d44184e5f412e52f9f1866b6d7c8990",
+    size: 160,
+  },
 };

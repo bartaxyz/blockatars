@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useSeedColor returns a color 1`] = `
+{
+  "seedValues": [
+    47764,
+    116988,
+    48789,
+    49772,
+  ],
+  "shift": [Function],
+}
+`;

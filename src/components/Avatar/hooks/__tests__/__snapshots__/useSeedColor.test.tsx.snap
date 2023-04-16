@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useSeedColor returns a color 1`] = `
+{
+  "backgroundColor": "hsl(169deg, 80.2%, 60.7%)",
+  "color1": "hsl(294deg, 87.8%, 60.5%)",
+  "color2": "hsl(332deg, 76.9%, 50.6%)",
+}
+`;

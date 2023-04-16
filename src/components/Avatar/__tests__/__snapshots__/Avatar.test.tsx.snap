@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar renders the Avatar component 1`] = `
+<DocumentFragment>
+  <svg
+    height="24"
+    viewBox="0 0 200 200"
+    width="24"
+  >
+    <defs>
+      <filter
+        id="blur"
+      >
+        <fegaussianblur
+          in="SourceGraphic"
+          stdDeviation="50"
+        />
+      </filter>
+      <filter
+        id="noise"
+      >
+        <feturbulence
+          baseFrequency="10"
+          numOctaves="50"
+          result="noise"
+          type="fractalNoise"
+        />
+        <fecolormatrix
+          result="saturate"
+          type="saturate"
+          values="1"
+        />
+        <fecomponenttransfer>
+          <fefuncr
+            intercept="0.5"
+            slope="1"
+            type="linear"
+          />
+          <fefuncg
+            intercept="0.5"
+            slope="1"
+            type="linear"
+          />
+          <fefuncb
+            intercept="0.5"
+            slope="1"
+            type="linear"
+          />
+          <fefunca
+            type="identity"
+          />
+        </fecomponenttransfer>
+        <fecomposite
+          in2="SourceGraphic"
+          operator="in"
+        />
+        <feblend
+          in="rgba(0, 0, 0, 0.1)"
+          in2="SourceGraphic"
+          mode="multiply"
+        />
+      </filter>
+    </defs>
+    <g
+      filter="url(#noise)"
+    >
+      <rect
+        fill="#cf9782"
+        filter="url(#noise)"
+        height="100%"
+        width="100%"
+      />
+      <g
+        filter="url(#blur)"
+      >
+        <rect
+          fill-opacity="0"
+          height="100%"
+          width="100%"
+        />
+        <circle
+          cx="138.55862081664222"
+          cy="90.62691952235856"
+          fill="#d0b77b"
+          r="82.25128527730703"
+        />
+        <circle
+          cx="130.26600180399788"
+          cy="108.83105876646574"
+          fill="#dabe7c"
+          r="81.32641195319593"
+        />
+      </g>
+    </g>
+  </svg>
+</DocumentFragment>
+`;
