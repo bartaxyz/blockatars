@@ -1,6 +1,6 @@
 {
   "name": "blockatars",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Get rid of those ugly blockies. Instead, enhance your web3 UIs with beautiful blockavatars!",
   "scripts": {
     "rollup": "rollup -c",
