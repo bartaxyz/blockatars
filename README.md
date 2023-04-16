@@ -1,9 +1,8 @@
 # Blockatars
 
-| <img width="486" alt="Screenshot 2023-04-16 at 13 20 29" src="https://user-images.githubusercontent.com/4202010/232305939-82f0b28e-2fcf-48a0-a9c7-988dc1b33fb2.png"> |
-| --- |
+<img width="640" alt="Blockatars - Social Preview" src="https://user-images.githubusercontent.com/4202010/232314537-268c1999-9998-46b3-9221-0f7d277fb659.png">
 
-React library that generates unique visual hashes. Every small change in `seed` will generate a vastly different image.
+React library for generating unique visual hashes. Every small change in `seed` will generate a vastly different image.
 
 Blockatars internally uses the same system for generating colors as [blockies](https://github.com/download13/blockies), this was done to preserve some visual compatibility between library that's already widely used. Though, the color distribution may be (and likely will be) different.
 
