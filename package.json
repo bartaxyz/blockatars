@@ -4,7 +4,9 @@
   "description": "React library for generating unique visual hashes",
   "scripts": {
     "test": "jest",
-    "build": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "build:esm": "tsc --module esnext --outDir dist/esm",
+    "build": "npm run build:cjs && npm run build:esm",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build"
   },
@@ -39,12 +41,10 @@
     "storybook": "^7.0.5",
     "typescript": "^5.0.4"
   },
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "files": [
     "dist"
-  ],
-  "exports": {
-    ".": "./dist/index.js"
-  }
+  ]
 }
