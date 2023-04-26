@@ -39,6 +39,14 @@ export const Component = () => {
 | `disableNoise` | | `boolean` | Disables the noise that's by default applied to the avatar |
 | `disableBlur` | | `boolean` | Disables the blur that's by default applied to the avatar (⚠️ this generates a vastly different-looking avatar) |
 
+## As seen on
+
+| ![logo](https://user-images.githubusercontent.com/4202010/234538365-f6fff62e-dc4c-436d-9e4c-d80ded51131f.png) |
+| --- |
+
+
+Are you using Blockatars? Create an issue, and your company logo might make it here!
+
 ## License
 
 React Tree List is licensed under the MIT License.
