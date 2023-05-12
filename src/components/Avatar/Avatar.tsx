@@ -2,6 +2,7 @@ import React, { FC, useMemo } from "react";
 import { lighten } from "polished";
 import { useSeedColor } from "./hooks/useSeedColor";
 import { useSeedRandom } from "./hooks/useSeedRandom";
+import { Noise } from "../Noise/Noise";
 
 export interface AvatarProps extends React.SVGProps<SVGSVGElement> {
   /**
@@ -80,53 +81,45 @@ export const Avatar: FC<AvatarProps> = ({
     };
   }, [color1, color2, shift]);
 
-  return (
-    <svg width={size} height={size} viewBox="0 0 200 200" {...props}>
-      <defs>
-        {!disableBlur && (
-          <filter id="blur">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="50" />
-          </filter>
-        )}
+  const scale = size / 200;
 
-        {!disableNoise && (
-          <filter id="noise">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="10"
-              numOctaves="50"
-              result="noise"
-            />
-            <feColorMatrix type="saturate" values="1" result="saturate" />
-            <feComponentTransfer>
-              <feFuncR type="linear" slope="1" intercept="0.5" />
-              <feFuncG type="linear" slope="1" intercept="0.5" />
-              <feFuncB type="linear" slope="1" intercept="0.5" />
-              <feFuncA type="identity" />
-            </feComponentTransfer>
-            <feComposite operator="in" in2="SourceGraphic" />
-            <feBlend
-              mode="multiply"
-              in="rgba(0, 0, 0, 0.1)"
-              in2="SourceGraphic"
-            />
-          </filter>
-        )}
+  return (
+    <svg
+      width={size}
+      height={size}
+      // viewBox="0 0 200 200"
+      {...props}
+      style={{
+        /**
+         * Keeping the noise image texture filter pixelated
+         */
+        imageRendering: "pixelated",
+        ...props.style,
+      }}
+    >
+      <defs>
+        <filter id="blur">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="50" />
+        </filter>
       </defs>
 
-      <g filter="url(#noise)">
+      <g transform={`scale(${scale})`}>
         <rect
-          width="100%"
-          height="100%"
+          width={size / scale}
+          height={size / scale}
           fill={lighten(0.25, backgroundColor)}
-          filter="url(#noise)"
         />
-        <g filter="url(#blur)">
+      </g>
+
+      <g transform={`scale(${scale})`}>
+        <g filter={!disableBlur ? "url(#blur)" : undefined}>
           <rect width="100%" height="100%" fillOpacity="0" />
           {shape1}
           {shape2}
         </g>
       </g>
+
+      {!disableNoise && <Noise />}
     </svg>
   );
 };
