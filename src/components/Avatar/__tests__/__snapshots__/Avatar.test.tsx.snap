@@ -9,7 +9,7 @@ exports[`Avatar renders the Avatar component 1`] = `
   >
     <defs>
       <filter
-        id="blur"
+        id=":r0:-blur"
       >
         <fegaussianblur
           in="SourceGraphic"
@@ -17,7 +17,7 @@ exports[`Avatar renders the Avatar component 1`] = `
         />
       </filter>
       <filter
-        id="noise"
+        id=":r0:-noise"
       >
         <feturbulence
           baseFrequency="10"
@@ -61,17 +61,14 @@ exports[`Avatar renders the Avatar component 1`] = `
         />
       </filter>
     </defs>
-    <g
-      filter="url(#noise)"
-    >
+    <g>
       <rect
         fill="#cf9782"
-        filter="url(#noise)"
         height="100%"
         width="100%"
       />
       <g
-        filter="url(#blur)"
+        filter="url(#:r0:-blur)"
       >
         <rect
           fill-opacity="0"

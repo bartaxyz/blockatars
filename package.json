@@ -4,6 +4,7 @@
   "description": "React library for generating unique visual hashes",
   "scripts": {
     "test": "jest",
+    "test:update": "jest --updateSnapshot",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "build:esm": "tsc --module esnext --outDir dist/esm",
     "build": "npm run build:cjs && npm run build:esm",
