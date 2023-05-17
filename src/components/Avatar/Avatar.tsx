@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from "react";
+import React, { FC, useId, useMemo } from "react";
 import { lighten } from "polished";
 import { useSeedColor } from "./hooks/useSeedColor";
 import { useSeedRandom } from "./hooks/useSeedRandom";
@@ -34,10 +34,11 @@ export const Avatar: FC<AvatarProps> = ({
   seed,
   size,
   disableLowerCase = false,
-  disableNoise = false,
+  disableNoise = true,
   disableBlur = false,
   ...props
 }) => {
+  const id = useId();
   const transformedSeed = disableLowerCase ? seed : seed.toLowerCase();
   const { shift } = useSeedRandom(transformedSeed);
   const { backgroundColor, color1, color2 } = useSeedColor(transformedSeed);
@@ -80,48 +81,47 @@ export const Avatar: FC<AvatarProps> = ({
     };
   }, [color1, color2, shift]);
 
+  const blurId = `${id}-blur`;
+  const noiseId = `${id}-noise`;
+
   return (
     <svg width={size} height={size} viewBox="0 0 200 200" {...props}>
       <defs>
-        {!disableBlur && (
-          <filter id="blur">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="50" />
-          </filter>
-        )}
+        <filter id={blurId}>
+          <feGaussianBlur in="SourceGraphic" stdDeviation="50" />
+        </filter>
 
-        {!disableNoise && (
-          <filter id="noise">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="10"
-              numOctaves="50"
-              result="noise"
-            />
-            <feColorMatrix type="saturate" values="1" result="saturate" />
-            <feComponentTransfer>
-              <feFuncR type="linear" slope="1" intercept="0.5" />
-              <feFuncG type="linear" slope="1" intercept="0.5" />
-              <feFuncB type="linear" slope="1" intercept="0.5" />
-              <feFuncA type="identity" />
-            </feComponentTransfer>
-            <feComposite operator="in" in2="SourceGraphic" />
-            <feBlend
-              mode="multiply"
-              in="rgba(0, 0, 0, 0.1)"
-              in2="SourceGraphic"
-            />
-          </filter>
-        )}
+        <filter id={noiseId}>
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="10"
+            numOctaves="50"
+            result="noise"
+          />
+          <feColorMatrix type="saturate" values="1" result="saturate" />
+          <feComponentTransfer>
+            <feFuncR type="linear" slope="1" intercept="0.5" />
+            <feFuncG type="linear" slope="1" intercept="0.5" />
+            <feFuncB type="linear" slope="1" intercept="0.5" />
+            <feFuncA type="identity" />
+          </feComponentTransfer>
+          <feComposite operator="in" in2="SourceGraphic" />
+          <feBlend
+            mode="multiply"
+            in="rgba(0, 0, 0, 0.1)"
+            in2="SourceGraphic"
+          />
+        </filter>
       </defs>
 
-      <g filter="url(#noise)">
+      <g filter={!disableNoise ? `url(#${noiseId})` : undefined}>
         <rect
           width="100%"
           height="100%"
           fill={lighten(0.25, backgroundColor)}
-          filter="url(#noise)"
+          filter={!disableNoise ? `url(#${noiseId})` : undefined}
         />
-        <g filter="url(#blur)">
+        <g filter={!disableBlur ? `url(#${blurId})` : undefined}>
           <rect width="100%" height="100%" fillOpacity="0" />
           {shape1}
           {shape2}
